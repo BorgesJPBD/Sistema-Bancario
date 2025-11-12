@@ -1,29 +1,49 @@
 
 class BancoError(Exception):
-    """Erro base para o sistema bancário."""
+    """Erro genérico do sistema bancário."""
     pass
 
 
-class ClienteError(BancoError):
-    """Erros relacionados ao cliente."""
+class ValorInvalidoError(BancoError):
+    """Valor numérico inválido (negativo, zero, etc.)."""
     pass
 
 
-class ContaError(BancoError):
-    """Erros relacionados à conta."""
+class SaldoInsuficienteError(BancoError):
+    """Tentativa de saque/transferência sem saldo suficiente."""
     pass
 
 
-class ValorInvalidoError(ContaError):
-    """Quando o valor informado é inválido (ex: negativo ou zero)."""
+class ContaNaoEncontradaError(BancoError):
+    """Conta não foi encontrada pelo número informado."""
     pass
 
 
-class SaldoInsuficienteError(ContaError):
-    """Quando não há saldo suficiente para a operação."""
+class NomeObrigatorioError(BancoError):
+    """Nome do titular é obrigatório."""
     pass
 
 
-class ContaNaoEncontradaError(ContaError):
-    """Quando uma conta não é encontrada pelo número."""
+class OpcaoInvalidaError(BancoError):
+    """Opção do menu inválida."""
+    pass
+
+
+class OperacaoCanceladaError(BancoError):
+    """Usuário cancelou a operação."""
+    pass
+
+
+class LimiteSaqueExcedidoError(BancoError):
+    """Saque acima do limite permitido (por operação ou diário)."""
+    pass
+
+
+class LimiteTransferenciaExcedidoError(BancoError):
+    """Transferência acima do limite permitido."""
+    pass
+
+
+class ContaJaExisteError(BancoError):
+    """Já existe uma conta com este identificador (ex: CPF)."""
     pass
